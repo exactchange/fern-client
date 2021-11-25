@@ -27,6 +27,13 @@ const parse = parser({
     )
   ),
 
+  getCards: async params => (
+    request(
+      'GET',
+      `${baseURL}/fern/cards?${querystring.stringify(params)}`
+    )
+  ),
+
   putCard: async params => (
     request(
       'PUT',
@@ -49,6 +56,10 @@ module.exports = {
 
   card: async params => (
     parse('getCard', params)
+  ),
+
+  cards: async params => (
+    parse('getCards', params)
   ),
 
   save: async params => (
