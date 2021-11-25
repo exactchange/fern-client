@@ -29,8 +29,9 @@ const parse = parser({
 
   getCards: async params => (
     request(
-      'GET',
-      `${baseURL}/fern/cards?${querystring.stringify(params)}`
+      'POST',
+      `${baseURL}/fern/cards`,
+      params
     )
   ),
 
