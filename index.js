@@ -51,7 +51,7 @@ module.exports = {
     parse('getCard', params)
   ),
 
-  saveCard: async params => (
+  save: async params => (
     parse('putCard', params)
   ),
 
