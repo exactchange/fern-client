@@ -27,10 +27,18 @@ const parse = parser({
     )
   ),
 
+  putCard: async params => (
+    request(
+      'PUT',
+      `${baseURL}/fern/card`,
+      params
+    )
+  ),
+
   createTransaction: async params => (
     request(
       'POST',
-      `${baseURL}/identity/user`,
+      `${baseURL}/fern/transaction`,
       params
     )
   )
@@ -41,6 +49,10 @@ module.exports = {
 
   card: async params => (
     parse('getCard', params)
+  ),
+
+  saveCard: async params => (
+    parse('putCard', params)
   ),
 
   transaction: async params => (
