@@ -49,6 +49,14 @@ const parse = parser({
       `${baseURL}/fern/transaction`,
       params
     )
+  ),
+
+  requestPayout: async params => (
+    request(
+      'POST',
+      `${baseURL}/fern/payout`,
+      params
+    )
   )
 });
 
@@ -69,5 +77,9 @@ module.exports = {
 
   transaction: async params => (
     parse('createTransaction', params)
+  ),
+
+  payout: async params => (
+    parse('requestPayout', params)
   )
 };
