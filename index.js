@@ -20,6 +20,13 @@ const request = (method, url, body = {}) => {
 };
 
 const parse = parser({
+  getBalance: async params => (
+    request(
+      'GET',
+      `${baseURL}/fern/balance?${querystring.stringify(params)}`
+    )
+  ),
+
   getCard: async params => (
     request(
       'GET',
@@ -62,6 +69,10 @@ const parse = parser({
 
 module.exports = {
   setURL: url => baseURL = url,
+
+  balance: async params => (
+    parse('getBalance', params)
+  ),
 
   card: async params => (
     parse('getCard', params)
