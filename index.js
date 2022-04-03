@@ -58,10 +58,18 @@ const parse = parser({
     )
   ),
 
-  requestPayout: async params => (
+  createPayout: async params => (
     request(
       'POST',
       `${baseURL}/fern/payout`,
+      params
+    )
+  ),
+  
+  createBalanceInquiry: async params => (
+    request(
+      'POST',
+      `${baseURL}/fern/balance`,
       params
     )
   )
@@ -69,10 +77,6 @@ const parse = parser({
 
 module.exports = {
   setURL: url => baseURL = url,
-
-  balance: async params => (
-    parse('getBalance', params)
-  ),
 
   card: async params => (
     parse('getCard', params)
@@ -91,6 +95,10 @@ module.exports = {
   ),
 
   payout: async params => (
-    parse('requestPayout', params)
+    parse('createPayout', params)
+  ),
+
+  balance: async params => (
+    parse('createBalanceInquiry', params)
   )
 };
